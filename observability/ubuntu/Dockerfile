@@ -6,7 +6,6 @@ RUN apt-get update -y && apt-get upgrade -y
 
 COPY . /usr/src/observability/
 
-
 #RUN apt-get install wget -y && wget wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
 
 RUN tar xvf node_exporter-1.3.1.linux-amd64.tar.gz

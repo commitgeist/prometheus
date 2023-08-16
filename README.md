@@ -3,7 +3,8 @@ Instalação do agent -> https://github.com/prometheus/node_exporter/releases
 
 <!-- ## URL DA IMAGEM DO Prometheus -->
 Acesse -> https://hub.docker.com/r/prom/prometheus
-
+Download -> https://github.com/prometheus-community/windows_exporter
+Instalação no Windows -> msiexec windows_exporter-0.23.1-amd64.msi --collectors.enabled
 # Docker 
 
 <!-- Comando quebrando linhas -->

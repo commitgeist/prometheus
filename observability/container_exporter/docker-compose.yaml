@@ -5,11 +5,11 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
   
   grafana:
-    image: grafana/grafana
+    image: prom/node-exporter
     ports:
       - "9100:9100"
