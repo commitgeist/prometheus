@@ -1,7 +1,8 @@
 # prometheus
 Instalação do agent -> https://github.com/prometheus/node_exporter/releases
 
-# https://hub.docker.com/r/prom/prometheus
+# URL DA IMAGEM DO Prometheus
+Acesse -> https://hub.docker.com/r/prom/prometheus
 
 
 # Comando quebrando linhas
