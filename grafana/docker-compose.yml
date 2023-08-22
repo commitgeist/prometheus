@@ -1,0 +1,11 @@
+version: '3'
+services:
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./custom.ini:/etc/grafana/custom.ini
+    command: ["grafana", "cli", "--config=/etc/grafana/custom.ini"]
