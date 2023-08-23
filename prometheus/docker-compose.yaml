@@ -1,15 +1,32 @@
 version: "3.9"
+
+networks:
+  - monitoring:
+    driver: bridge
 services:
   prometheus:
     image: prom/prometheus
     ports:
-      - "9090:9090"
+      - "3001:3001"
     volumes:
       - ./prometheus/prometheus.yml:/prometheus/prometheus.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - monitoring
   
   grafana:
     image: grafana/grafana
     ports:
       - "3000:3000"
+    networks:
+      - monitoring
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=123@mudar
+      # - GF_USERS_ALLOW_SIGN_UP=false
+      # - GF_SERVER_DOMAIN=myrul.com
+      # - GF_SMTP_ENABLED=true
+      # - GF_SMTP_HOST=smtp.gmail.com:587
+      # - GF_SMTP_USER=myadrress@gmail.com
+      # - GF_SMTP_PASSWORD=mypassword
+      # - GF_SMTP_FROM_ADDRESS=myaddress@gmail.com

@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  grafana:
+    extends:
+      file: docker-compose.yaml
+      service: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin@12345
+      - GF_USERS_ALLOW_SIGN_UP=false
+      # - GF_SERVER_DOMAIN=myrul.com
