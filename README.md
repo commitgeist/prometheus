@@ -8,6 +8,15 @@ Download -> https://github.com/prometheus-community/windows_exporter
 Instalação no Windows -> msiexec windows_exporter-0.23.1-amd64.msi --collectors.enabled
 
 
+# Configuração de autenticação no prometheus
+    StackOverFlow -> https://stackoverflow.com/questions/64031121/configure-basic-auth-for-prometheus-target
+
+# Alertas no Prometheus
+
+    Alert Manager -> https://muetsch.io/sending-prometheus-alerts-to-telegram-with-telepush.html
+
+
+
 # Docker 
 
 <!-- Comando quebrando linhas -->
@@ -31,9 +40,7 @@ Override:
 # Docker
     Instalação em container -> https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
 
-
-
-# Métricas
+# Métricas Grafana X Prometheus
 
 1. **Sum (Soma):**
    Imagine que você tem várias coisas pequenas e quer saber quanto todas elas somadas pesam. A soma é basicamente isso. No contexto de métricas, como as que você vê em um sistema de monitoramento, o "sum" nos diz a quantidade total de alguma coisa. Por exemplo, a soma do espaço livre em todos os discos.
@@ -52,5 +59,14 @@ Override:
     Lembre-se de que essas métricas são usadas para monitorar o desempenho do seu sistema e entender como os recursos estão sendo usados. É como se fosse um termômetro para o seu computador, permitindo que você saiba quando alguma coisa está mudando mais rápido do que o normal ou quando algo precisa ser ajustado.
 
 
-    # Query's
+   **Query's Grafana**
+    **Performance de Energia da CPU
     sum(rate(windows_cpu_cstate_seconds_total{state="c1"}[5m])) / sum(rate(windows_cpu_cstate_seconds_total{}[5m])) * 100
+
+
+
+    **Templates Dashboards**
+    **https://grafana.com/grafana/dashboards/18699-windows-node-exporter-full-1/
+
+
+
