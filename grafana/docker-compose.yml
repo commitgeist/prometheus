@@ -5,7 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
-    volumes:
-      - ./custom.ini:/etc/grafana/custom.ini
-    command: ["grafana", "cli", "--config=/etc/grafana/custom.ini"]
+      - "80:80"
+    # volumes:
+    #   - ./custom.ini:/etc/grafana/custom.ini
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin@123
+      # - GF_PATHS_CONFIG=/etc/grafana/custom.ini
