@@ -1,7 +1,7 @@
 version: "3.9"
 
 networks:
-  - monitoring:
+  monitoring:
     driver: bridge
 services:
   prometheus:
@@ -9,9 +9,12 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./prometheus/prometheus.yml:/prometheus/prometheus.yml
+      - ./prometheus.yml:/prometheus/prometheus.yml
+      - ./web.yml:/prometheus/web.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+      #https://bcrypt-generator.com/
+      # - '--web.config.file=/etc/prometheus/web.yml'
     networks:
       - monitoring
   

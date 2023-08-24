@@ -11,6 +11,7 @@ Instalação no Windows -> msiexec windows_exporter-0.23.1-amd64.msi --collector
 # Configuração de autenticação no prometheus
     StackOverFlow -> https://stackoverflow.com/questions/64031121/configure-basic-auth-for-prometheus-target
 
+    Youtube -> https://www.youtube.com/watch?v=SUe4aO_CWmI
 # Alertas no Prometheus
 
     Alert Manager -> https://muetsch.io/sending-prometheus-alerts-to-telegram-with-telepush.html

@@ -1,0 +1,4 @@
+#https://bcrypt-generator.com/
+basic_auth:
+    username: admin
+    password: admin@1234 

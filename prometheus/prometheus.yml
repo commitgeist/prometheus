@@ -11,3 +11,6 @@ scrape_configs:
       - targets: 
         - 172.18.160.1:9182  # Substitua pelo endereço IP ou nome do servidor onde o Node Exporter está em execução.
         - 10.10.10.5:9182
+    # basic_auth:
+    #   username: admin
+    #   password: admin@1234 
