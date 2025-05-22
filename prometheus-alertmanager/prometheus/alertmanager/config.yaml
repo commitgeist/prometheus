@@ -1,0 +1,28 @@
+route:
+  receiver: 'telegram-alerts'
+  group_by: [alerta_api]  # Agrupa por esse label
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1m
+
+receivers:
+- name: 'telegram-alerts'
+  webhook_configs:
+  - url: 'https://api.telegram.org/bot6676213885:AAH_Xu6RsEVOU_CkPhCK6Krr9Zl0ICIANys/sendMessage'
+    send_resolved: true  # Envia notificação quando o alerta é resolvido
+    http_config:
+      # Se quiser enviar em formato JSON (mais organizado)
+      headers:
+        Content-Type: application/json
+    # Configura o corpo da mensagem (usando template do Alertmanager)
+    body: |
+      {
+        "chat_id": "-1002430777380",
+        "text": "{{ range .Alerts }}[{{ .Status | toUpper }}] {{ .Annotations.summary }}\n{{ .Annotations.description }}\n{{ end }}",
+        "parse_mode": "Markdown"
+      }
+
+# receivers:
+#   - name: default
+#     webhook_configs:
+#       - url: 'http://localhost:5001'

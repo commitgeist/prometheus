@@ -1,0 +1,12 @@
+groups:
+  - name: alerta_api
+    rules:
+      - alert: APIIndisponivel
+        expr: up{job="api-monitorada"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          alerta_api: true
+        annotations:
+          summary: "A API caiu!"
+          description: "A API {{ $labels.instance }} está fora do ar por mais de 30 segundos."
