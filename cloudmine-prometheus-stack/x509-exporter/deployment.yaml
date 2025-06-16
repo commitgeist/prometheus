@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: x509-exporter
+  labels:
+    app: x509-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: x509-exporter
+  template:
+    metadata:
+      labels:
+        app: x509-exporter
+    spec:
+      serviceAccountName: x509-exporter
+      containers:
+        - name: x509-exporter
+          image: quay.io/enix/x509-certificate-exporter:3.12.0
+          args:
+            - --watch-kube-secrets
+            - --secret-type=kubernetes.io/tls:tls.crt
+            - --max-cache-duration=300s
+            - --listen-address=:9793
+          ports:
+            - containerPort: 9793
+              name: http

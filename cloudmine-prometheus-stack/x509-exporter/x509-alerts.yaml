@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: x509-cert-alerts
+  namespace: monitoring
+  labels:
+    prometheus: k8s
+    role: alert-rules
+spec:
+  groups:
+    - name: x509-certificate-alerts
+      rules:
+        - alert: TLSCertificateExpired
+          expr: x509_cert_expired == 1
+          for: 10s
+          labels:
+            severity: critical
+          annotations:
+            summary: "Certificado expirado: {{ $labels.secret_name }}"
+            description: "O certificado '{{ $labels.secret_name }}' no namespace '{{ $labels.secret_namespace }}' já está expirado!"

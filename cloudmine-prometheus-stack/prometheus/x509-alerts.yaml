@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: x509-alerts
+  namespace: monitoring
+data:
+  x509-rules.yml: |
+    groups:
+      - name: x509.rules
+        rules:
+          - alert: SSLCertificateExpiringSoon
+            expr: (x509_cert_not_after - time()) < 86400 * 10
+            for: 5m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Certificado expirando em breve ({{ $labels.subject }})"
+              description: "O certificado em {{ $labels.instance }} expira em menos de 10 dias (expira em {{ $value | humanizeTimestamp }})"

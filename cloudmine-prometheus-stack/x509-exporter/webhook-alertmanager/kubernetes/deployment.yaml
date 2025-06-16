@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-alertmanager
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhook-alertmanager
+  template:
+    metadata:
+      labels:
+        app: webhook-alertmanager
+    spec:
+      containers:
+        - name: webhook
+          image: docker.io/library/webhook-alertmanager:v1
+          ports:
+            - containerPort: 5000

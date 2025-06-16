@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: x509-webhook
+  namespace: monitoring
+spec:
+  route:
+    receiver: webhook-itsm
+    matchers:
+      - name: alertname
+        matchType: =
+        value: TLSCertificateExpired
+  receivers:
+    - name: webhook-itsm
+      webhookConfigs:
+        - url: "http://webhook-service.monitoring.svc:5000/webhook"
+          sendResolved: true
